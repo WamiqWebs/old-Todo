@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title><link rel="stylesheet" href="doto.css">
+</head>
+<body>
+  <section class="main">
+  <input type="text" id="inp">
+  <button type="button" onclick="show()" id="btn">ADD</button>
+  <div id="container"></div>
+</div>
+</section>
+<script>
+   let count = 0;
+   function show(){
+       let input = document.getElementById("inp").value.trim();
+    if(input === ""){
+      return false;
+    }
+   let div = document.createElement("div");
+       div.className= "item";
+   count++;
+   let para = document.createElement("p");
+       para.className= "para";
+       para.textContent = count + ": "+ input;
+   let checkbox = document.createElement("input");
+       checkbox.type = "checkbox";
+   checkbox.addEventListener("click",function(){
+    if(this.checked){
+      para.classList.add('done');
+         setTimeout(() => {
+            div.remove();
+        }, 2000);
+
+        
+      }
+   });
+   div.append(para);
+   div.append(checkbox);
+   document.getElementById("container").append(div);
+   document.getElementById("inp").value = "";
+  }
+</script>
+</body>
+</html>
